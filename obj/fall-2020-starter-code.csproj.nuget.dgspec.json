@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jslucas\\source\\repos\\fall-2020-starter-code\\fall-2020-starter-code.csproj": {}
+    "C:\\Users\\birdc\\source\\repos\\pa3-agcrofoot-1\\fall-2020-starter-code.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jslucas\\source\\repos\\fall-2020-starter-code\\fall-2020-starter-code.csproj": {
+    "C:\\Users\\birdc\\source\\repos\\pa3-agcrofoot-1\\fall-2020-starter-code.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jslucas\\source\\repos\\fall-2020-starter-code\\fall-2020-starter-code.csproj",
+        "projectUniqueName": "C:\\Users\\birdc\\source\\repos\\pa3-agcrofoot-1\\fall-2020-starter-code.csproj",
         "projectName": "fall-2020-starter-code",
-        "projectPath": "C:\\Users\\jslucas\\source\\repos\\fall-2020-starter-code\\fall-2020-starter-code.csproj",
-        "packagesPath": "C:\\Users\\jslucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jslucas\\source\\repos\\fall-2020-starter-code\\obj\\",
+        "projectPath": "C:\\Users\\birdc\\source\\repos\\pa3-agcrofoot-1\\fall-2020-starter-code.csproj",
+        "packagesPath": "C:\\Users\\birdc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\birdc\\source\\repos\\pa3-agcrofoot-1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jslucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\birdc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +37,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "System.Data.SQLite.Core": {
+              "target": "Package",
+              "version": "[1.0.113.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
