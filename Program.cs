@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace fall_2020_starter_code
 {
@@ -166,8 +167,17 @@ namespace fall_2020_starter_code
                     //If the input was '4' the user will be routed
                     else if(menuChoice == 4)
                     {
-                        string cs = @"URI = file:C\Users\birdc\source\repos\pa3-agcrofoot-1\posts.db";
+                        string cs = @"URI = file:C:\Users\birdc\source\repos\pa3-agcrofoot-1\posts.db";
                         using var con = new SQLiteConnection(cs);
+                        con.Open();
+
+                        string stm = "select SQLITE_VERSION()";
+
+                        using var cmd = new SQLiteCommand(stm, con);
+                        string version = cmd.ExecuteScalar().ToString();
+                        Console.WriteLine($"SQLite version : {version}");
+
+
                     }
 
                     //Exits the code
