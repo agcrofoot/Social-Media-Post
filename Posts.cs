@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace fall_2020_starter_code
+namespace pa3_agcrofoot_1
 {
     public class Posts : IComparable<Posts>, IEquatable<Posts>
     {
@@ -21,12 +17,12 @@ namespace fall_2020_starter_code
        }
 
        //Gets the posts ready to be saved to the file
-       public string ToFile()
+       public override string ToString()
        {
-           return ID + "#" + Text + "#" + Timestamp;
+           return ID + " " + Text + " " + Timestamp;
        }
 
-       //Uses the IEquatable to see if one ID is equal to another
+        //Uses the IEquatable to see if one ID is equal to another
        public bool Equals(Posts temp)
        {
            if(temp == null) return false;
