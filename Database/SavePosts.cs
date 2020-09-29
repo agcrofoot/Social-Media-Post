@@ -13,7 +13,8 @@ namespace pa3_agcrofoot_1.Database
 
             using var cmd = new SQLiteCommand(con);
 
-            cmd.CommandText = @"INSERT INTO BigAlsPosts(text, timestamp) VALUES(@text, @timestamp)";
+            cmd.CommandText = @"INSERT INTO BigAlsPosts(id, text, timestamp) VALUES(@id, @text, @timestamp)";
+            cmd.Parameters.AddWithValue("@id", BigAlsPosts.ID);
             cmd.Parameters.AddWithValue("@text", BigAlsPosts.Text);
             cmd.Parameters.AddWithValue("@timestamp", BigAlsPosts.Timestamp);
             cmd.Prepare();

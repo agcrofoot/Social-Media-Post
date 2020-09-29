@@ -63,12 +63,34 @@ namespace pa3_agcrofoot_1
                         SavePosts savePosts = new SavePosts();
                         IReadAllPosts readPosts = new ReadPost();
                         List<Posts> BigAlsPosts = readPosts.GetPosts();
-
-                        Console.WriteLine("Enter your post.");
-                        Posts newPost = new Posts(){Text = Console.ReadLine(), Timestamp = DateTime.Now.ToString()};
-                        savePosts.SavePost(newPost);
-                        Console.Clear();
-                        Console.WriteLine(newPost.ToString());
+                        if(BigAlsPosts.Count == 0)
+                        {
+                            Console.WriteLine("Enter your post.");
+                            Posts newPost = new Posts(){ID = 1, Text = Console.ReadLine(), Timestamp = DateTime.Now.ToString()};
+                            BigAlsPosts.Sort();
+                            savePosts.SavePost(newPost);
+                            Console.Clear();
+                            Console.WriteLine(newPost.ToString());
+                        }
+                        else
+                        {
+                            List<int> postIDs = new List<int>();
+                            //The loop runs through the BigAlsPosts list and adds the postIDs to the postIDs list.
+                            foreach(Posts post in BigAlsPosts)
+                            {
+                                postIDs.Add(post.ID);
+                            }
+                            //Sets the maximum number assigned as a post ID as the lastPost
+                            int lastPost = postIDs.Max();
+                            //This adds 1 to the most recent post ID, and sets it as the current postID
+                            int currentPost = lastPost + 1;
+                            Console.WriteLine("Enter your post.");
+                            Posts newPost = new Posts(){ID = currentPost, Text = Console.ReadLine(), Timestamp = DateTime.Now.ToString()};
+                            BigAlsPosts.Sort();
+                            savePosts.SavePost(newPost);
+                            Console.Clear();
+                            Console.WriteLine(newPost.ToString());
+                        }
                         Console.WriteLine("Press any key to return to the Menu.");
                         Console.ReadKey();
            
@@ -77,40 +99,48 @@ namespace pa3_agcrofoot_1
                     else if(menuChoice == 3)
                     {
                         Console.Clear();
-                        while(true)
+                        SavePosts savePosts = new SavePosts();
+                        DeletePosts deletePosts = new DeletePosts();
+                        IReadAllPosts readPosts = new ReadPost();
+                        List<Posts> BigAlsPosts = readPosts.GetPosts();
+                        if(BigAlsPosts.Count == 0)
                         {
-                            SavePosts savePosts = new SavePosts();
-                            DeletePosts deletePosts = new DeletePosts();
-                            IReadAllPosts readPosts = new ReadPost();
-                            List<Posts> BigAlsPosts = readPosts.GetPosts();
+                            Console.WriteLine("There are no posts to delete.");
+                            Console.WriteLine("Press any key to return to the Menu.");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
                             BigAlsPosts.Sort();
                             foreach(Posts post in BigAlsPosts)
                             {
                                 Console.WriteLine(post.ToString());
                             }
-                            Console.WriteLine("Enter the ID of the post you would like to delete.");
-                            try
+                            while(true)
                             {
-                                int deleteID = int.Parse(Console.ReadLine());
-                                BigAlsPosts.Remove(new Posts(){ID = deleteID, Text = " ", Timestamp = " "});
-                                BigAlsPosts.Sort();
-                                deletePosts.DeletePost();
-                                foreach(Posts post in BigAlsPosts)
+                                Console.WriteLine("Enter the ID of the post you would like to delete.");
+                                try
                                 {
-                                    Console.WriteLine(post.ToString());
-                                    savePosts.SavePost(post);
+                                    int deleteID = int.Parse(Console.ReadLine());
+                                    BigAlsPosts.Remove(new Posts(){ID = deleteID, Text = " ", Timestamp = " "});
+                                    BigAlsPosts.Sort();
+                                    deletePosts.DeletePost();
+                                    foreach(Posts post in BigAlsPosts)
+                                    {
+                                        Console.WriteLine(post.ToString());
+                                        savePosts.SavePost(post);
+                                    }
+                                    Console.WriteLine("Press any key to return to the Menu.");
+                                    Console.ReadKey();
+                                    break;
                                 }
-                                Console.ReadKey();
-                                Console.WriteLine("Press any key to return to the Menu.");
-                                Console.ReadKey();
-                                break;
-                            }
-                            catch(Exception e)
-                            {
-                                Console.WriteLine(e.Message);
-                                Console.WriteLine("Please try again.");
-                                Console.ReadKey();
-                            }
+                                catch(Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    Console.WriteLine("Please try again.");
+                                    Console.ReadKey();
+                                }
+                            }  
                         }
                     }
 

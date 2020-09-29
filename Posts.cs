@@ -21,8 +21,6 @@ namespace pa3_agcrofoot_1
        {
            return ID + " " + Text + " " + Timestamp;
        }
-
-        //Uses the IEquatable to see if one ID is equal to another
        public bool Equals(Posts temp)
        {
            if(temp == null) return false;
